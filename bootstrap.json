@@ -1,0 +1,218 @@
+{
+	"configFileType":{
+		"suse-release" : {
+			"fileName" : "/etc/SuSE-release",
+			"parsingMethod" : "suse-release"
+		},
+		"gentoo-release" : {
+			"fileName" : "/etc/gentoo-release",
+			"parsingMethod" : "sys-release"
+		},
+		"redhat-release" : {
+			"fileName" : "/etc/redhat-release",
+			"parsingMethod" : "sys-release"
+		},
+		"os-release" : {
+			"fileName" : "/etc/os-release",
+			"parsingMethod" : "os-release"
+		},
+		"sys-release" : {
+			"fileName" : "/etc/system-release",
+			"parsingMethod" : "sys-release"
+		},
+		"lsb-release" : {
+			"fileName" : "/etc/lsb-release",
+			"parsingMethod" : "lsb-release"
+		}
+	},
+	"configFilePref" : {
+		"0" : [
+			"suse-release", "gentoo-release", "redhat-release"
+		],
+		"1" : [
+			"os-release", "sys-release"
+		],
+		"2" : [
+			"lsb-release"
+		]
+	},
+	"parsingMethod" : {
+		"suse-release" : {
+			"distro" : {
+				"lineStart" : ""
+			},
+			"major" : {
+				"lineStart" : "version",
+				"regex" : "[0-9]+"
+			},
+			"minor" : {
+				"lineStart" : "patchlevel",
+				"regex" : "[0-9]+"
+			}
+		},
+		"os-release" : {
+			"distro" : {
+				"lineStart" : "name="
+			},
+			"version" : {
+				"lineStart" : "version=",
+				"regex" : "[0-9]+([.][0-9]+)?"
+			}
+		},
+		"sys-release" : {
+			"distro" : {
+				"lineStart" : ""
+			},
+			"version" : {
+				"lineStart" : "",
+				"regex" : "[0-9]+([.][0-9]+)?"
+			}
+		},
+		"lsb-release" : {
+			"distro" : {
+				"lineStart" : "distrib_id="
+			},
+			"version" : {
+				"lineStart" : "distrib_release",
+				"regex" : "[0-9]+([.][0-9]+)?"
+			}
+		}
+	},
+	"osNameMap" : {
+		"rhel" : ["red hat"],
+		"ubuntu" : ["ubuntu"],
+		"fedora" : ["fedora"],
+		"debian" : ["debian"],
+		"suse" : ["suse"],
+		"centos" : ["centos"],
+		"amazon" : ["amazon linux"],
+		"gentoo" : ["gentoo"]
+	},
+	"osTypeMap" : {
+		"rhel" : {
+			"rhel5" : {
+				"upperVersion" : 6.0,
+				"lowerVersion" : 5.0
+			},
+			"rhel6" : {
+            	"upperVersion" : 7.0,
+            	"lowerVersion" : 6.0
+            },
+			"rhel7" : {
+				"upperVersion" : 8.0,
+				"lowerVersion" : 7.0
+			},
+			"rhel8" : {
+				"upperVersion": 8.0,
+				"lowerVersion": 7.0
+			}
+		},
+		"centos" : {
+			"centos5" : {
+				"upperVersion" : 6.0,
+				"lowerVersion" : 5.0
+			},
+			"centos6" : {
+				"upperVersion" : 7.0,
+				"lowerVersion" : 6.0
+			},
+			"centos7" : {
+				"upperVersion" : 8.0,
+				"lowerVersion" : 7.0
+			}
+		},
+		"ubuntu" : {
+			"ubuntu10" : {
+				"upperVersion" : 11.0,
+				"lowerVersion" : 10.0
+			},
+			"ubuntu11" : {
+				"upperVersion" : 12.0,
+				"lowerVersion" : 11.0
+			},
+			"ubuntu1204" : {
+				"upperVersion" : 12.1,
+				"lowerVersion" : 12.0
+			},
+			"ubuntu13" : {
+				"upperVersion" : 14.0,
+				"lowerVersion" : 12.1
+			},
+			"ubuntu1404" : {
+				"upperVersion" : 15.0,
+				"lowerVersion" : 14.0
+			},
+			"ubuntu1604" : {
+				"upperVersion" : 17.0,
+				"lowerVersion" : 16.0
+			},
+			"ubuntu1804" : {
+				"upperVersion" : 19.0,
+				"lowerVersion" : 18.0
+			}
+		},
+		"debian" : {
+			"debian7" : {
+				"upperVersion" : 8.0,
+				"lowerVersion" : 7.0
+			}
+		},
+		"amazon" : {
+			"amazon" : {
+				"upperVersion" : 2015.0,
+				"lowerVersion" : 0.0
+			}
+		},
+		"suse" : {
+			"suse11" : {
+				"upperVersion" : 12.0,
+				"lowerVersion" : 11.0
+			},
+			"suse12" : {
+				"upperVersion" : 13.0,
+				"lowerVersion" : 12.0
+			}
+		},
+		"fedora" : {
+			"fedora20" : {
+				"upperVersion" : 21.0,
+				"lowerVersion" : 20.0
+			}
+		}
+	},
+	"packageUrl" : {
+		"cliqrInstaller" : "BUNDLE_STORE_URL/cliqrInstaller.zip",
+		"corePkg" : "BUNDLE_STORE_URL/corePkg.tar.gz",
+		"simpleJson" : "BUNDLE_STORE_URL/simplejson.tar.gz"
+	},
+	"packageManageCmd" : {
+		"ubuntu" : {
+			"install" : "apt-get -y install",
+			"refreshIndex" : "apt-get update"
+		},
+		"debian" : {
+			"install" : "apt-get -y install",
+			"refreshIndex" : "apt-get update"	
+		},
+		"amazon" : {
+			"install" : "yum -y install",
+			"refreshIndex" : ""
+		},
+		"centos" : {
+			"install" : "yum -y install",
+			"refreshIndex" : ""
+		},
+		"fedora" : {
+			"install" : "yum -y install",
+			"refreshIndex" : ""
+		},
+		"rhel" : {
+			"install" : "yum -y install",
+			"refreshIndex" : ""
+		},
+		"suse" : {
+			"install" : "zypper -n in",
+			"refreshIndex" : ""
+		}
+	}
+}
